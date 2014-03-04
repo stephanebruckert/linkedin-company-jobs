@@ -1,0 +1,22 @@
+{% extends "jobs/__base.html" %}
+
+{% block navigation %}
+<li class="active"><a href="/test">Employers</a></li>
+<li><a href="#">Jobs</a></li>
+{% endblock %}
+
+{% block content %}
+	{% if latest_employer_list %}
+	    <div class="row">
+    	{% for employer in latest_employer_list %}
+			<div class="col-md-4">
+        	<h2>{{ employer.name }}</h2>
+			<p>{{ employer.description|slice:":255" }} ... <i>read more</i></p>
+			<p><a class="btn btn-default" href="/test/{{ employer.id }}/" role="button">See jobs &raquo;</a></p>
+	        </div>
+    	{% endfor %}
+		</div>
+	{% else %}
+    	<p>No companies are available.</p>
+	{% endif %}
+{% endblock %}

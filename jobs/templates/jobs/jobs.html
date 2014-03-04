@@ -1,0 +1,19 @@
+{% extends "jobs/__base.html" %}
+
+{% block navigation %}
+<li><a href="/test">Employers</a></li>
+<li class="active"><a href="#">Jobs</a></li>
+{% endblock %}
+
+{% block content %}
+	{% if latest_jobs_list %}
+	        <div class="col-lg-6">
+    	{% for job in latest_jobs_list %}
+        	<h4><a href="{{ job.2.1.url }}">{{ job.4.1.title }}</a></h4>
+        	<p> {{ job.0.1 }} </p>
+    	{% endfor %}
+    		</div>
+	{% else %}
+    	<p>No jobs are available for this company.</p>
+	{% endif %}
+{% endblock %}
